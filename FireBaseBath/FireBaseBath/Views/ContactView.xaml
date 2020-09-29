@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FireBaseBath.Views.ContactView">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <StackLayout>
+                    <Image Margin="0,0,0,10" HeightRequest="100" Source="quality.png"></Image>
+                    <Label Margin="0,0,0,10" Text="Batch" 
+                           FontAttributes="Bold"
+                           FontSize="Large" 
+                           TextColor="Indigo" 
+                           HorizontalTextAlignment="Center">                        
+                    </Label>
+                    <Entry x:Name="txtId" Placeholder="Id"></Entry>
+                    <Entry x:Name="txtName" Placeholder="Nme"></Entry>
+                    <Entry x:Name="txtEmail" Placeholder="Email"></Entry>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                        <Button x:Name="BtnInclude" WidthRequest="150" Text="Enter"
+                                BackgroundColor="Aqua"
+                                Clicked="BtnInclude_Clicked"/>
+                        <Button x:Name="BtnShow" WidthRequest="150" Text="Show"
+                                BackgroundColor="Gainsboro"
+                                Clicked="BtnShow_Clicked"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                        <Button x:Name="BtnReload" WidthRequest="150" Text="Reload"
+                                BackgroundColor="YellowGreen"
+                                Clicked="BtnReload_Clicked"/>
+                        <Button x:Name="BtnDelete" WidthRequest="150" Text="Delete"
+                                BackgroundColor="Salmon"
+                                Clicked="BtnDelete_Clicked"/>
+                    </StackLayout>
+
+
+
+                    <CollectionView x:Name="ListContact" BackgroundColor="AntiqueWhite">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout HeightRequest="50" WidthRequest="200"
+                                             Orientation="Horizontal" Padding="0,5,0,5">
+                                    <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Email}" VerticalOptions="Center"/>
+
+                                </StackLayout>
+                                    
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                    </CollectionView>
+                    
+
+
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
