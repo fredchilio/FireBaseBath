@@ -30,8 +30,70 @@ namespace FireBaseBath.Services
                     Email = item.Object.Email,
                     ContatoId = item.Object.ContatoId
                 }).ToList();
-    }
+        }
     
-            
+         public async Task<Contato> GetContato(int contatoId)
+        {
+            try
+            {
+                var contato = (await firebase
+                    .Child("Contatos")
+                    .OnceAsync<Contato>())
+                    .Where(a => a.Object.ContatoId == contatoId).FirstOrDefault();
+
+                return await firebase.Child("Contatos")
+                    .Child(contato.Key).OnceSingleAsync<Contato>();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task UpdateContatos(int contatoId, string name, string email)
+        {
+            try
+            {
+                var toUpdateContato = (await firebase
+                    .Child("Contatos")
+                    .OnceAsync<Contato>())
+                    .Where(a => a.Object.ContatoId == contatoId).FirstOrDefault();
+                await firebase
+                    .Child("Contatos")
+                    .Child(toUpdateContato.Key)
+                    .PutAsync(new Contato()
+                    {
+                        ContatoId = contatoId,
+                        Name = name,
+                        Email = email
+                    });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task DeleteContato(int contatoId)
+        {
+            try
+            {
+                var toDeleteContato = (await firebase
+                    .Child("Contatos")
+                    .OnceAsync<Contato>())
+                    .Where(a => a.Object.ContatoId == contatoId).FirstOrDefault();
+
+                await firebase.Child("Contatos")
+                    .Child(toDeleteContato.Key)
+                    .DeleteAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

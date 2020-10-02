@@ -26,9 +26,9 @@
                                 Clicked="BtnShow_Clicked"/>
                     </StackLayout>
                     <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                        <Button x:Name="BtnReload" WidthRequest="150" Text="Reload"
+                        <Button x:Name="BtnUpDate" WidthRequest="150" Text="Reload"
                                 BackgroundColor="YellowGreen"
-                                Clicked="BtnReload_Clicked"/>
+                                Clicked="BtnUpDate_Clicked"/>
                         <Button x:Name="BtnDelete" WidthRequest="150" Text="Delete"
                                 BackgroundColor="Salmon"
                                 Clicked="BtnDelete_Clicked"/>
@@ -41,8 +41,8 @@
                             <DataTemplate>
                                 <StackLayout HeightRequest="50" WidthRequest="200"
                                              Orientation="Horizontal" Padding="0,5,0,5">
-                                    <Label Text="{Binding Name}" VerticalOptions="Center"/>
-                                    <Label Text="{Binding Email}" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Name}" FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Email}" FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
 
                                 </StackLayout>
                                     
